@@ -1,9 +1,12 @@
 {
   // Cloudflare Workers static-assets deployment.
-  // Usage: npm run build && npx wrangler deploy
-  // (If you `npm i -D wrangler`, add "$schema": "node_modules/wrangler/config-schema.json" for validation.)
+  // Cloudflare's deploy command (`npx wrangler deploy`) runs `build.command`
+  // first, producing ./out, then serves it as static assets.
   "name": "rule-shift-web",
   "compatibility_date": "2026-10-23",
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page"
